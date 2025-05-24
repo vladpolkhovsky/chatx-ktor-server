@@ -31,7 +31,7 @@ repositories {
 val service = project.extensions.getByType<JavaToolchainService>()
 
 val customLauncher = service.launcherFor {
-    languageVersion.set(JavaLanguageVersion.of(22))
+    languageVersion.set(JavaLanguageVersion.of(17))
 }
 
 project.tasks.withType<UsesKotlinJavaToolchain>().configureEach {
