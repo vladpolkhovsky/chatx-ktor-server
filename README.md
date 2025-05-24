@@ -1,5 +1,7 @@
 # Ktor ChatX backend
 
+To build component, you need Java 17
+
 ## ENV
 
 - `JWT_SECRET` - JWT secret key (default: `SECRET`)
