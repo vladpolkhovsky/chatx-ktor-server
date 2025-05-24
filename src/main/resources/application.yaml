@@ -1,0 +1,19 @@
+ktor:
+  application:
+    modules:
+      - by.vpolkhovsy.ApplicationKt.module
+  deployment:
+    port: "$PORT:8080"
+
+jwt:
+  domain: "$JWT_DOMAIN:https://jwt-provider-domain/"
+  audience: "jwt-audience"
+  realm: "ktor chat server"
+  secret: "$JWT_SECRET:SECRET"
+
+database:
+  use-in-memory-database: "$USE_IN_MEMORY_DATABASE:false"
+  postgres:
+    url: "$DB_URL:jdbc:postgresql://localhost:5432/local"
+    user: "$DB_USER:localDB"
+    password: "$DB_PASSWORD:localPS"
