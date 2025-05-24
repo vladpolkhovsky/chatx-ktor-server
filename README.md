@@ -1,45 +1,23 @@
-# ktor-chat-webserver
+# Ktor ChatX backend
 
-This project was created using the [Ktor Project Generator](https://start.ktor.io).
+## ENV
 
-Here are some useful links to get you started:
+- `JWT_SECRET` - JWT secret key (default: `SECRET`)
+- `JWT_DOMAIN` - JWT domain (default: `https://jwt-provider-domain/`)
+- `USE_IN_MEMORY_DATABASE` - flag indicates that server uses h2 database (default: `true`)
+- `DB_URL` - external db jdbc url (null if `USE_IN_MEMORY_DATABASE`)
+- `DB_USER` - external db user (null if `USE_IN_MEMORY_DATABASE`)
+- `DB_PASSWORD` - external db pass (null if `USE_IN_MEMORY_DATABASE`)
+- `PORT` - app internal port (default: `8080`)
 
-- [Ktor Documentation](https://ktor.io/docs/home.html)
-- [Ktor GitHub page](https://github.com/ktorio/ktor)
-- The [Ktor Slack chat](https://app.slack.com/client/T09229ZC6/C0A974TJ9). You'll need
-  to [request an invite](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up) to join.
+## Local startup
 
-## Features
+1. `./gradlew run` - starts server with default port (`8080`) and in memory database
 
-Here's a list of features included in this project:
+## Docker startup
 
-| Name                                                                   | Description                                                                        |
-| ------------------------------------------------------------------------|------------------------------------------------------------------------------------ |
-| [Routing](https://start.ktor.io/p/routing)                             | Provides a structured routing DSL                                                  |
-| [Authentication](https://start.ktor.io/p/auth)                         | Provides extension point for handling the Authorization header                     |
-| [Authentication JWT](https://start.ktor.io/p/auth-jwt)                 | Handles JSON Web Token (JWT) bearer authentication scheme                          |
-| [Content Negotiation](https://start.ktor.io/p/content-negotiation)     | Provides automatic content conversion according to Content-Type and Accept headers |
-| [kotlinx.serialization](https://start.ktor.io/p/kotlinx-serialization) | Handles JSON serialization using kotlinx.serialization library                     |
-| [Postgres](https://start.ktor.io/p/postgres)                           | Adds Postgres database to your application                                         |
+1. `docker build --tag 'chatx-ktor-backend' .`
 
-## Building & Running
+2. `docker run --name 'ChatX-Backend' -d -p '8090:8080' 'chatx-ktor-backend''`
 
-To build or run the project, use one of the following tasks:
-
-| Task                          | Description                                                          |
-| -------------------------------|---------------------------------------------------------------------- |
-| `./gradlew test`              | Run the tests                                                        |
-| `./gradlew build`             | Build everything                                                     |
-| `buildFatJar`                 | Build an executable JAR of the server with all dependencies included |
-| `buildImage`                  | Build the docker image to use with the fat JAR                       |
-| `publishImageToLocalRegistry` | Publish the docker image locally                                     |
-| `run`                         | Run the server                                                       |
-| `runDocker`                   | Run using the local docker image                                     |
-
-If the server starts successfully, you'll see the following output:
-
-```
-2024-12-04 14:32:45.584 [main] INFO  Application - Application started in 0.303 seconds.
-2024-12-04 14:32:45.682 [main] INFO  Application - Responding at http://0.0.0.0:8080
-```
-
+Container starts with port `8090`
